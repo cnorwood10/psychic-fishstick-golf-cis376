@@ -1,370 +1,94 @@
-@font-face {
-    font-family: SuisseIntl;
-    src: url("https://cdn.honey.io/fonts/suisse-intl/400.eot");
-    src: url("https://cdn.honey.io/fonts/suisse-intl/400.woff2") format("woff2"),url("https://cdn.honey.io/fonts/suisse-intl/400.woff") format("woff"),url("https://cdn.honey.io/fonts/suisse-intl/400.ttf") format("truetype"),url("https://cdn.honey.io/fonts/suisse-intl/400.svg") format("svg");
-    font-weight: 400;
-    font-display: swap
+@import url('https://fonts.googleapis.com/css?family=Cardo:400i|Rubik:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+body {
+  --s: 55px; /* control the size */
+  --b: 15px; /* control the thickness of the curved lines */
+  
+  --_r: calc(1.28*var(--s) + var(--b)/2) at top 50%;
+  --_f: calc(99.5% - var(--b)),#F9F2E7 calc(101% - var(--b)) 99.5%,#0000 101%;
+  --_g0: calc(-.8*var(--s)), #88A65E var(--_f);
+  --_g1: calc(-.8*var(--s)), #BFB35A var(--_f);
+  --_s: calc(1.8*var(--s) + var(--b));
+  background: 
+    radial-gradient(var(--_r) right var(--_g0)) calc(-1*var(--_s)) var(--s),
+    radial-gradient(var(--_r) left  var(--_g1))         var(--_s)  calc(-1*var(--s)),
+    radial-gradient(var(--_r) right var(--_g1)) calc(var(--_s)/-2) calc(-1*var(--s)),
+    radial-gradient(var(--_r) left  var(--_g0)) calc(var(--_s)/ 2) var(--s),
+    linear-gradient(90deg,#88A65E 50%,#BFB35A 0);
+  background-size: var(--_s) calc(4*var(--s));
 }
 
-@font-face {
-    font-family: SuisseIntl;
-    src: url("https://cdn.honey.io/fonts/suisse-intl/500.eot");
-    src: url("https://cdn.honey.io/fonts/suisse-intl/500.woff2") format("woff2"),url("https://cdn.honey.io/fonts/suisse-intl/500.woff") format("woff"),url("https://cdn.honey.io/fonts/suisse-intl/500.ttf") format("truetype"),url("https://cdn.honey.io/fonts/suisse-intl/500.svg") format("svg");
-    font-weight: 500;
-    font-display: swap
+
+
+@keyframes colors {
+	100% { filter: hue-rotate(360deg); }
 }
 
-@font-face {
-    font-family: SuisseIntl;
-    src: url("https://cdn.honey.io/fonts/suisse-intl/600.eot");
-    src: url("https://cdn.honey.io/fonts/suisse-intl/600.woff2") format("woff2"),url("https://cdn.honey.io/fonts/suisse-intl/600.woff") format("woff"),url("https://cdn.honey.io/fonts/suisse-intl/600.ttf") format("truetype"),url("https://cdn.honey.io/fonts/suisse-intl/600.svg") format("svg");
-    font-weight: 600;
-    font-display: swap
+.page-content {
+    display: grid;
+    grid-gap: 1rem;
+    padding: 0;
+    margin: 0 auto;
+    font-family: var(--font-sans);
+    /* border-bottom: 1rem solid #F6D155; */
+    /* max-width: 1040px; */
 }
 
-@font-face {
-    font-family: SuisseIntl;
-    src: url("https://cdn.honey.io/fonts/suisse-intl/700.eot");
-    src: url("https://cdn.honey.io/fonts/suisse-intl/700.woff2") format("woff2"),url("https://cdn.honey.io/fonts/suisse-intl/700.woff") format("woff"),url("https://cdn.honey.io/fonts/suisse-intl/700.ttf") format("truetype"),url("https://cdn.honey.io/fonts/suisse-intl/700.svg") format("svg");
-    font-weight: 700;
-    font-display: swap
-}
-
-@font-face {
-    font-family: SuisseIntlMono;
-    src: url("https://cdn.honey.io/fonts/suisse-intl-mono/regular.eot");
-    src: url("https://cdn.honey.io/fonts/suisse-intl-mono/regular.woff2") format("woff2"),url("https://cdn.honey.io/fonts/suisse-intl-mono/regular.woff") format("woff"),url("https://cdn.honey.io/fonts/suisse-intl-mono/regular.ttf") format("truetype"),url("https://cdn.honey.io/fonts/suisse-intl-mono/regular.svg") format("svg");
-    font-display: swap
-}
-
-@font-face {
-    font-family: Eina03;
-    src: url("https://cdn.honey.io/fonts/eina03/700.eot");
-    src: url("https://cdn.honey.io/fonts/eina03/700.woff2") format("woff2"),url("https://cdn.honey.io/fonts/eina03/700.woff") format("woff"),url("https://cdn.honey.io/fonts/eina03/700.ttf") format("truetype");
-    font-weight: 700;
-    font-display: swap
-}
-
-@font-face {
-    font-family: Pangea;
-    src: url("https://cdn.honey.io/fonts/pangea/medium.woff2") format("woff2"),url("https://cdn.honey.io/fonts/pangea/medium.woff") format("woff");
-    font-display: swap
-}
-
-@font-face {
-    font-family: HoneyGoldG;
-    font-display: swap;
-    src: url("https://cdn.honey.io/fonts/honeygold-g/medium.ttf") format("truetype")
-}
-
-*[id^="honey"] * {
-    font-family: SuisseIntl,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    font-weight: 500;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale
-}
-
-*[id^="honey"] .h0,*[id^="honey"] .h1,*[id^="honey"] .h2,*[id^="honey"] .h3,*[id^="honey"] .price6 {
-    font-family: Pangea,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-    font-weight: initial;
-    font-variant-numeric: proportional-nums
-}
-
-*[id^="honey"] .h0 {
-    font-size: 50px;
-    line-height: 56px
-}
-
-@media(min-width: 768px) {
-    *[id^="honey"] .h0 {
-        font-size:64px;
-        line-height: 76px
+@media (min-width: 600px) {
+    .page-content {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-*[id^="honey"] .h1 {
-    font-size: 36px;
-    line-height: 44px
-}
-
-@media(min-width: 768px) {
-    *[id^="honey"] .h1 {
-        font-size:50px;
-        line-height: 56px
+@media (min-width: 800px) {
+    .page-content {
+        grid-template-columns: repeat(6, 1fr);
     }
 }
-
-*[id^="honey"] .h2 {
-    font-size: 28px;
-    line-height: 36px
+.card {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    padding: 1rem;
+    width: 100%;
+    text-align: center;
+    box-shadow: 4px 4px 2px 1px rgb(255, 129, 79);
+    color: black;
 }
 
-@media(min-width: 768px) {
-    *[id^="honey"] .h2 {
-        font-size:36px;
-        line-height: 44px
-    }
-}
 
-*[id^="honey"] .h3 {
-    font-size: 28px;
-    line-height: 36px
-}
-
-*[id^="honey"] .title0-pangea,*[id^="honey"] .title1-pangea,*[id^="honey"] .title2-pangea,*[id^="honey"] .title3-pangea,*[id^="honey"] .title4-pangea,*[id^="honey"] .title5-pangea,*[id^="honey"] .title6-pangea {
-    font-family: Pangea,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-    font-weight: initial
-}
-
-*[id^="honey"] .price1,*[id^="honey"] .price2,*[id^="honey"] .price3,*[id^="honey"] .price4,*[id^="honey"] .price5,*[id^="honey"] .title0,*[id^="honey"] .title1,*[id^="honey"] .title2,*[id^="honey"] .title3,*[id^="honey"] .title4,*[id^="honey"] .title5,*[id^="honey"] .title6,*[id^="honey"] .body1,*[id^="honey"] .body2,*[id^="honey"] .body3,*[id^="honey"] .body4,*[id^="honey"] .body5,*[id^="honey"] .label0,*[id^="honey"] .label1,*[id^="honey"] .label2,*[id^="honey"] .label3,*[id^="honey"] .link1,*[id^="honey"] .link2,*[id^="honey"] .link3 {
-    font-family: SuisseIntl,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"
-}
-
-*[id^="honey"] .price1 {
-    font-size: 11px;
-    font-weight: bold;
-    line-height: 12px
-}
-
-*[id^="honey"] .price2 {
-    font-size: 14px;
-    font-weight: bold;
-    line-height: 16px
-}
-
-*[id^="honey"] .price3 {
-    font-size: 16px;
-    font-weight: bold;
-    line-height: 20px
-}
-
-*[id^="honey"] .price4 {
-    font-size: 18px;
-    font-weight: bold;
-    line-height: 24px
-}
-
-*[id^="honey"] .price5 {
-    font-size: 28px;
-    font-weight: bold;
-    line-height: 36px
-}
-
-*[id^="honey"] .price6 {
-    font-size: 50px;
-    letter-spacing: 1px;
-    line-height: 56px
-}
-
-*[id^="honey"] .title0,*[id^="honey"] .title0-pangea {
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 16px
-}
-
-*[id^="honey"] .title1,*[id^="honey"] .title1-pangea {
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 16px
-}
-
-*[id^="honey"] .title2,*[id^="honey"] .title2-pangea {
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 20px
-}
-
-*[id^="honey"] .title3,*[id^="honey"] .title3-pangea {
-    font-size: 17px;
-    font-weight: 600;
-    line-height: 22px
-}
-
-*[id^="honey"] .title4,*[id^="honey"] .title4-pangea {
-    font-size: 17px;
-    font-weight: 600;
-    line-height: 22px
-}
-
-@media(min-width: 768px) {
-    *[id^="honey"] .title4,*[id^="honey"] .title4-pangea {
-        font-size:20px;
-        line-height: 24px
-    }
-}
-
-*[id^="honey"] .title5,*[id^="honey"] .title5-pangea {
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 24px
-}
-
-@media(min-width: 768px) {
-    *[id^="honey"] .title5,*[id^="honey"] .title5-pangea {
-        font-size:24px;
-        line-height: 28px
-    }
-}
-
-*[id^="honey"] .title6,*[id^="honey"] .title6-pangea {
-    font-size: 24px;
-    font-weight: 600;
-    line-height: 28px
-}
-
-@media(min-width: 768px) {
-    *[id^="honey"] .title6,*[id^="honey"] .title6-pangea {
-        font-size:28px;
-        line-height: 36px
-    }
-}
-
-*[id^="honey"] .body1 {
-    font-size: 11px;
-    font-weight: 500;
-    line-height: 16px
-}
-
-*[id^="honey"] .body2 {
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 16px
-}
-
-*[id^="honey"] .body3 {
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 20px
-}
-
-*[id^="honey"] .body4 {
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 24px
-}
-
-*[id^="honey"] .body5 {
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 24px
-}
-
-@media(min-width: 768px) {
-    *[id^="honey"] .body5 {
-        font-size:20px;
-        line-height: 32px
-    }
-}
-
-*[id^="honey"] .label0 {
-    font-size: 10px;
-    font-weight: 600
-}
-
-*[id^="honey"] .label1 {
-    font-size: 11px;
-    font-weight: 600;
-    line-height: 12px
-}
-
-*[id^="honey"] .label2 {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 1.1px;
-    line-height: 16px;
-    text-transform: uppercase
-}
-
-*[id^="honey"] .label3 {
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 16px
-}
-
-*[id^="honey"] .link1 {
-    font-size: 11px;
-    font-weight: 500;
-    line-height: 16px;
-    text-decoration: underline
-}
-
-*[id^="honey"] .link2 {
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 16px;
-    text-decoration: underline
-}
-
-*[id^="honey"] .link3 {
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 20px;
-    text-decoration: underline
-}
-
-*[id^="honey"] .mono1,*[id^="honey"] .mono2,*[id^="honey"] .mono3,*[id^="honey"] .mono4,*[id^="honey"] .mono5 {
-    font-family: SuisseIntlMono,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"
-}
-
-*[id^="honey"] .mono1 {
-    font-size: 11px;
-    line-height: 16px
-}
-
-*[id^="honey"] .mono2 {
-    font-size: 12px;
-    line-height: 16px
-}
-
-*[id^="honey"] .mono3 {
-    font-size: 14px;
-    line-height: 20px
-}
-
-*[id^="honey"] .mono4 {
-    font-size: 16px;
-    line-height: 24px
-}
-
-*[id^="honey"] .mono5 {
-    font-size: 24px;
-    line-height: 32px
-}
-
-*[id^="honey"] .hyperlink {
+.btn {
     cursor: pointer;
-    text-decoration: underline
+    margin-top: 0rem;
+    padding: 0.3rem 1.5rem;
+    font-size: 1.2rem;
+    /* font-weight: bold; */
+    /* letter-spacing: 0.025rem; */
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(214, 61, 0);
+    border: none;
+    font-family: 'VT323', monospace;
+    
 }
 
-*[id^="honey"] .hyperlink-blue {
-    color: #3d68fb
+
+
+
+.content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+    transition: transform var(--d) var(--e);
+    z-index: 1;
 }
 
-*[id^="honey"] .hyperlink-blue:hover {
-    color: #6083fb
-}
-
-*[id^="honey"] .hyperlink-black {
-    color: #212121
-}
-
-*[id^="honey"] .hyperlink-black:hover {
-    color: #424242
-}
-
-*[id^="honey"] .hyperlink-grey {
-    color: #616161
-}
-
-*[id^="honey"] .hyperlink-grey:hover {
-    color: #757575
-}
-
-*[id^="honey"] img[class*="creditPromoImage"] {
-    height: initial
-}
 
 .row
     {
@@ -377,4 +101,3 @@
   {
     min-height: 90px;
   }
-  
