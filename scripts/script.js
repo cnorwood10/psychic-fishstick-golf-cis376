@@ -126,11 +126,11 @@ $.each(games, function (index, item) {
 
   // create a brand new HTML element JUST with code
 
-var card = `<div class="col-md-4"> <div class='card'> \
+var card = `<div class="col-md-4"> <div class='card' style ="background-color: purple; margin-bottom: 10px;"> \
   <h2 class='card-title'> ${ item.title } </h2> \
    <div class='card-body'> Creator: ${ item.author } </div>\
        <div class ='card-footer'> \
-       <a href="${ item.link }" target="_blank" class="btn btn-primary" role="button">play</a> \
+       <a href="${ item.link }" target="_blank" class="btn btn-primary" style="background-color: gold; color: purple;"role="button">play</a> \
    </div>
    </div>
  </div>`; 
