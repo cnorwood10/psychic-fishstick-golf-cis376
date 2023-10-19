@@ -94,7 +94,7 @@ author: "Beth Ann Tucker"
       },
     {
       title: "Special Doge Game",
-      link: "https://panhead63.github.io/Charlie-lab/",
+    link: "https://panhead63.github.io/Charlie-lab/",
       author: "Rachel Thompson"
       },
     {
@@ -126,7 +126,7 @@ $.each(games, function (index, item) {
 
   // create a brand new HTML element JUST with code
 
-var card = `<div class="col-sm"> <div class='card'> \
+var card = `<div class="col-md-4"> <div class='card'> \
   <h2 class='card-title'> ${ item.title } </h2> \
    <div class='card-body'> Creator: ${ item.author } </div>\
        <div class ='card-footer'> \
@@ -135,15 +135,17 @@ var card = `<div class="col-sm"> <div class='card'> \
    </div>
  </div>`; 
 
-if (index == 0 || index % 4 == 0) {
-  $('#row1').append(card);
-}else if (index % 2 == 0) {
-  $('#row3').append(card);
-} else if ((index + 1 ) % 4 == 0) {
-  $('#row4').append(card);
-}else {
-  $('#row2').append(card);
-}
+ $('#rowx').append(card);
+
+// if (index == 0 || index % 4 == 0) {
+//   $('#row1').append(card);
+// }else if (index % 2 == 0) {
+//   $('#row3').append(card);
+// } else if ((index + 1 ) % 4 == 0) {
+//   $('#row4').append(card);
+// }else {
+//   $('#row2').append(card);
+// }
 
 });
 
